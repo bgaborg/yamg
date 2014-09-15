@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="yamg">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>yamg - Yet another maze generator</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/lib/require.js" data-main="js/main"></script>
+</head>
+<body>
+<div class="welcome">
+    <h1>YAMG!</h1>
+    <small>yet another maze generator</small>
+</div>
+
+<div class="config" ng-controller="configController as config">
+    <form class="clearfix">
+        <div class="pull-left">
+            <div class="input">
+                Width: <input type="text" ng-model="config.setting.columns"/> cells.
+            </div>
+            <div class="input">
+                Height: <input type="text" ng-model="config.setting.rows"/> cells.
+            </div>
+        </div>
+        <input class="pull-left" type="submit" value="Generate" ng-click="config.generateMaze()">
+        <!-- input type="submit" value="Solve" ng-click="config.solveMaze()" -->
+
+        <div class="clearfix"></div>
+        <div class="pull-left">{{config.message}}</div>
+    </form>
+</div>
+
+<div class="maze-container" ng-controller="drawController as dC">
+    <div ng-repeat="row in dC.maze.cells" class="maze-row">
+
+        <div class="cell-container" ng-repeat="cell in dC.maze.cells[$index]">
+            <div class="cell" ng-class="{visited: dC.maze.cells[$parent.$index][$index].visited,
+            'open-north': dC.maze.cells[$parent.$index][$index].openUp,
+            'open-east': dC.maze.cells[$parent.$index][$index].openRight,
+            'open-south': dC.maze.cells[$parent.$index][$index].openDown,
+            'open-west': dC.maze.cells[$parent.$index][$index].openLeft}"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

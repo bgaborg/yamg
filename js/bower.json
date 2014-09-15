@@ -1,0 +1,20 @@
+{
+  "name": "yamg",
+  "version": "0.0.0",
+  "authors": [
+    "Gabor Bota <gab.bota@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "require-less": "~0.1.2",
+    "angular": "~1.2.24"
+  }
+}
